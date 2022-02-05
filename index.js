@@ -1,18 +1,16 @@
-const core = require('@actions/core');
-const wait = require('./wait');
-
+const core = require("@actions/core");
+const { updateVersionInPubspecs } = require("./flutter-versioning");
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
+    const path = core.getInput("pubspec_path");
+    core.info(`pubspec_path: ${path}`);
 
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
+    const { newVersion, newBuild } = updateVersionInPubspecs({ path });
 
-    core.setOutput('time', new Date().toTimeString());
+    core.setOutput("new_version", newVersion);
+    core.setOutput("new_build", newBuild);
   } catch (error) {
     core.setFailed(error.message);
   }

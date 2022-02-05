@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "flutter-version-action",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "Sets the flutter version in the yaml file",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -25,11 +25,14 @@
   },
   "homepage": "https://github.com/actions/javascript-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.5"
+    "@actions/core": "^1.2.5",
+    "luxon": "^2.3.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.31.1",
     "eslint": "^8.0.0",
-    "jest": "^27.2.5"
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.2.5",
+    "prettier": "^2.5.1"
   }
 }

@@ -1,13 +1,14 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Flutter Versioning'
+description: 'Sets the flutter version and build number in the provided targets.'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  pubspec_path:
+    description: 'Path to the pubspec.yaml to update'
     required: true
-    default: '1000'
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  new_version:
+    description: 'The version that was written to the pubspec.yaml'
+  new_build: # output will be available to future steps
+    description: 'The build number that was written to the pubspec.yaml'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
